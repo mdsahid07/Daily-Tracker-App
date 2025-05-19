@@ -105,7 +105,8 @@ CREATE TABLE EvaluationLog (
 
 ## 📸 Screenshots
 
-**
+*![Main Window](Screenshots/main-window.png)
+
 
 * Main window
 * Report view
