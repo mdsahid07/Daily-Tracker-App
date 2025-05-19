@@ -1,54 +1,64 @@
-﻿📘 Daily Routine Tracker (WPF + SQL Server)
-A desktop productivity app built with WPF (.NET) and SQL Server, designed to help users:
+﻿# 📘 Daily Routine Tracker (WPF + SQL Server)
 
-Track daily tasks (✔ Done / ❌ Not done)
+A desktop productivity app built with **WPF (.NET)** and **SQL Server**, designed to help users:
 
-Evaluate themselves across focus categories (score 1–10)
+* Track daily tasks (✔ Done / ❌ Not done)
+* Evaluate themselves across focus categories (score 1–10)
+* Monitor progress using weekly/monthly charts and reports
+* Save, load, and update entries with a clean, persistent UI
 
-Monitor progress using weekly/monthly charts and reports
+---
 
-Save, load, and update entries with a clean, persistent UI
+## ✨ Features
 
-✨ Features
-✅ Task & Evaluation Grid – Auto-loaded from your database
+* ✅ **Task & Evaluation Grid** – Auto-loaded from your database
+* ✅ **Log Today** – Insert/update daily status and scores
+* ✅ **Summary Reports** – Weekly/monthly score breakdowns
+* ✅ **Chart Dashboard** – Bar chart with color-coded scores
+* ✅ **Auto-restore Today’s Log** – Continues where you left off
+* ✅ **Dropdown Score Selection** – Quick input per category
 
-✅ Log Today – Insert/update daily status and scores
+---
 
-✅ Summary Reports – Weekly/monthly score breakdowns
+## 🛠 Tech Stack
 
-✅ Chart Dashboard – Bar chart with color-coded scores
+| Area         | Stack              |
+| ------------ | ------------------ |
+| UI           | WPF (.NET 6 or 7)  |
+| DB           | SQL Server (local) |
+| ORM          | Dapper             |
+| Charts       | LiveCharts         |
+| Architecture | MVVM               |
 
-✅ Auto-restore Today’s Log – Continues where you left off
+---
 
-✅ Dropdown Score Selection – Quick input per category
+## 📦 Local Setup
 
-🛠 Tech Stack
-Area	Stack
-UI	WPF (.NET 6 or 7)
-DB	SQL Server (local)
-ORM	Dapper
-Charts	LiveCharts
-Architecture	MVVM
+### 🧩 Prerequisites
 
-📦 Local Setup
-🧩 Prerequisites
-Windows 10/11
+* Windows 10/11
+* SQL Server (local or Express)
+* .NET Desktop Runtime (v6 or v7)
 
-SQL Server (local or Express)
+### ⚙️ Configure Your Connection String
 
-.NET Desktop Runtime (v6 or v7)
+Edit `DbService.cs`:
 
-⚙️ Configure Your Connection String
-Edit DbService.cs:
-private readonly string _connectionString = 
+```csharp
+private readonly string _connectionString =
     "Server=localhost;Database=MyDailyRoutine;User Id=sa;Password=yourpassword;TrustServerCertificate=True;";
+```
 
+---
 
-    🛠 Database Schema
+## 🛠 Database Schema
+
 Run the following SQL script to create tables:
 
-<details> <summary>Click to expand schema</summary>
+<details>
+<summary>Click to expand schema</summary>
 
+```sql
 -- TaskDefinition
 CREATE TABLE TaskDefinition (
     TaskId INT PRIMARY KEY IDENTITY(1,1),
@@ -87,12 +97,29 @@ CREATE TABLE EvaluationLog (
     EvaluationId INT FOREIGN KEY REFERENCES EvaluationDefinition(EvaluationId),
     Score INT
 );
+```
 
+</details>
 
-🚀 Publish Locally
-In Visual Studio: Build → Publish → Folder
+---
 
-Run the .exe inside the publish/ folder
+## 📸 Screenshots
 
-🙌 Contributing
+**
+
+* Main window
+* Report view
+* Chart dashboard
+
+---
+
+## 🚀 Publish Locally
+
+1. In Visual Studio: **Build → Publish → Folder**
+2. Run the `.exe` inside the `publish/` folder
+
+---
+
+## 🙌 Contributing
+
 This is a personal utility app — feel free to fork, enhance, or turn into a more advanced self-tracking platform.
